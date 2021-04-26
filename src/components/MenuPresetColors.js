@@ -12,42 +12,50 @@ export const MenuPresetColors = ({dispatch, setModalOpen}) => {
 
     return (
             <div ref={ref}>
-                <input
-                    type="button"
-                    onClick={e => {
-                        dispatch({type: "SET_color", value: "#ff0000"});
-                        setModalOpen(false)
-                    }}
-                    style={{background: '#ff0000'}}
-                    value={"RED"}
-                />
-                <input
-                    type="button"
-                    onClick={e => {
-                        dispatch({type: "SET_color", value: "#ffcc33"});
-                        setModalOpen(false)
-                    }}
-                    style={{background: '#ffcc33'}}
-                    value={"YELLOW"}
-                />
-                <input
-                    type="button"
-                    onClick={e => {
-                        dispatch({type: "SET_color", value: "#17a459"});
-                        setModalOpen(false)
-                    }}
-                    style={{background: '#17a459'}}
-                    value={"GREEN"}
-                />
-                <input
-                    type="button"
-                    onClick={e => {
-                        dispatch({type: "SET_color", value: "#17b3ec"});
-                        setModalOpen(false)
-                    }}
-                    style={{background: '#17b3ec'}}
-                    value={"BLUE"}
-                />
+                <label>
+                    Red
+                    <input
+                        type="button"
+                        onClick={e => {
+                            dispatch({type: "SET_color", value: "#ff0000"});
+                            setModalOpen(false)
+                        }}
+                        style={{background: '#ff0000'}}
+                    />
+                </label>
+                <label>
+                    YELLOW
+                    <input
+                        type="button"
+                        onClick={e => {
+                            dispatch({type: "SET_color", value: "#ffcc33"});
+                            setModalOpen(false)
+                        }}
+                        style={{background: '#ffcc33'}}
+                    />
+                </label>
+                <label>
+                    GREEN
+                    <input
+                        type="button"
+                        onClick={e => {
+                            dispatch({type: "SET_color", value: "#17a459"});
+                            setModalOpen(false)
+                        }}
+                        style={{background: '#17a459'}}
+                    />
+                </label>
+                <label>
+                    BLUE
+                    <input
+                        type="button"
+                        onClick={e => {
+                            dispatch({type: "SET_color", value: "#17b3ec"});
+                            setModalOpen(false)
+                        }}
+                        style={{background: '#17b3ec'}}
+                    />
+                </label>
             </div>
     )
 }

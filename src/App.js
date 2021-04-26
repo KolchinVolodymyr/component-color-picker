@@ -1,7 +1,7 @@
 import './App.css';
-
 import {useState, useReducer} from 'react';
 import {MenuPresetColors} from "./components/MenuPresetColors";
+import {MenuRgbSliders} from "./components/MenuRgbSliders";
 
 const App = () => {
 
@@ -58,6 +58,8 @@ const App = () => {
 
     // State for our modal
     const [isModalOpen, setModalOpen] = useState(false);
+    // State for modal RGB
+    const [isModalOpenRGB, setModalOpenRGB] = useState(false);
 
     return (
         <>
@@ -69,11 +71,18 @@ const App = () => {
                 </div>
                 <div className="BackgroundSquare__border">
                     <div
+                        onClick={() => setModalOpenRGB(true)}
                         className="BackgroundSquare"
                         style={{background: hexString(state.red, state.green, state.blue)}}
                     >
                     </div>
                 </div>
+                <div className="RGB_Item__box">
+                    {isModalOpenRGB ? (
+                        <MenuRgbSliders setModalOpenRGB={setModalOpenRGB} dispatch={dispatch} state={state}/>
+                    ) : ( null )}
+                </div>
+
                 <div className="MenuItem__svg">
                     <svg
                         onClick={() => setModalOpen(true)}
@@ -93,33 +102,6 @@ const App = () => {
                         <MenuPresetColors dispatch={dispatch} setModalOpen={setModalOpen}/>
                     ) : ( null )}
                 </div>
-
-            </div>
-            <div className="box">
-                <label>Red</label>
-                <input
-                    type="range"
-                    min="0"
-                    max="255"
-                    onChange={e => dispatch({ type: "SET_RED", value: e.target.value })}
-                    value={state.red}
-                />
-                <label>Green</label>
-                <input
-                    type="range"
-                    min="0"
-                    max="255"
-                    onChange={e => dispatch({ type: "SET_GREEN", value: e.target.value })}
-                    value={state.green}
-                />
-                <label>Blue</label>
-                <input
-                    type="range"
-                    min="0"
-                    max="255"
-                    onChange={e => dispatch({ type: "SET_BLUE", value: e.target.value })}
-                    value={state.blue}
-                />
             </div>
 
         </>
