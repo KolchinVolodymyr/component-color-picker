@@ -49,8 +49,78 @@ input {
   text-align: center;
   margin-top: 1em;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
+.BackgroundSquare {
+  display: flex;
+  flex-direction: row;
+  height: 50px;
+  width: 50px;
+}
+.BackgroundSquare:hover {
+  cursor: pointer;
+}
+.ColorPickerMenu {
+  display: flex;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background: #fff;
+  border-radius: 10px;
+  width: 450px;
+}
+.BackgroundSquare__border {
+  padding: 20px;
+  border-right-color: #e4e0df;
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-left-color: #e4e0df;
+  border-left-style: solid;
+  border-left-width: 1px;
+}
+.MenuItem__svg {
+  width: 28px;
+  margin-top: 5%;
+  margin-left: 5%;
+}
+.MenuItem__svg svg {
+  color: #989999;
+}
+.MenuItem__svg svg:hover {
+  cursor: pointer;
+}
+.MenuItem__box {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 400px;
+  margin: 120px auto;
+  /*display: flex;*/
+  flex-direction: column;
+  /*padding: 20px;*/
+  background: #fff;
+  border-radius: 10px;
+  position: absolute;
+}
+
+.ColorHex {
+  width: 59%;
+  display: flex;
+  margin-left: 5%;
+  align-items: center;
+}
+.ColorHex div{
+  font-weight: bold;
+  color: #989999;
+  text-transform: UpperCase;
+}
+
+
+
+
+
+
+
+
+
+
 
 .results > div {
   margin-bottom: 1em;

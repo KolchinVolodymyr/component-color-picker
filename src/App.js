@@ -1,121 +1,9 @@
 import './App.css';
-//
- import { CirclePicker  } from 'react-color'
-// import SketchExample from "./SketchExample";
-// import {useState} from "react";
-//
-//
-// function App() {
-//   const colors = {
-//       'Red': "#ff33cc",
-//       'Yellow': "#ffcc33",
-//       'Green': "#00ff33",
-//       'Blue': "#0AB8E592",
-//   };
-//     const colors2 = [
-//         "#ff33cc",
-//         "#ffcc33",
-//         "#00ff33",
-//         "#0AB8E592",
-//     ]
-//     const animalsList = [
-//         {
-//             value: 'Red',
-//             hex: '#ff33cc'
-//         },
-//         {
-//             value: 'Yellow',
-//             hex: "#ffcc33"
-//         },
-//         {
-//             value: 'Green',
-//             hex: "#00ff33"
-//         },
-//         {
-//             value: 'Blue',
-//             hex: "#0AB8E592"
-//         }
-//     ];
-//     const initialState = {
-//         red: "1",
-//         green: "157",
-//         blue: "189"
-//     };
-//
-//     const rgbToHex = rgb => {
-//         let hex = Number(rgb).toString(16);
-//         if (hex.length < 2) {
-//             hex = "0" + hex;
-//         }
-//         return "" + hex;
-//     };
-//
-//   const [background, setBackground] = useState('#ff00ff');
-//     const changeHandler = event => {
-//         setBackground({...background, [event.target.name]: event.target.value});
-//     }
-//   return (
-//     <div className="App" style={{background: background}}>
-//         Hello
-//         <div className="container">
-//             <div className="card">
-//                 <input type="text" value={background}/>
-//                 <div className="color-slider-wrap">
-//                     {
-//                         animalsList.map(option =>
-//                            <div>
-//                                <option value={option.value} style={{background:option.hex}}
-//                                        onClick={()=>setBackground(option.hex)}>
-//                                    {option.value}
-//                                </option>
-//                            </div>
-//                         )
-//                     }
-//               </div>
-//             </div>
-//         </div>
-//
-//             <div className="box">
-//                 <label>Red</label>
-//                 <input
-//                     type="range"
-//                     min="0"
-//                     max="255"
-//                     // value={initialState.red}
-//                     onChange={changeHandler}
-//                 />
-//                 <label>Green</label>
-//                 <input
-//                     type="range"
-//                     min="0"
-//                     max="255"
-//                     //value={initialState.green}
-//                 />
-//                 <label>Blue</label>
-//                 <input
-//                     type="range"
-//                     min="0"
-//                     max="255"
-//                     value={initialState.blue}
-//                 />
-//             </div>
-//
-//         {/*<SketchPicker />*/}
-//         {/*<SketchExample />*/}
-//     </div>
-//   );
-// }
-//
-// export default App;
 
-
-
-
-
-import { useReducer } from "react";
+import {useState, useReducer} from 'react';
+import {MenuPresetColors} from "./components/MenuPresetColors";
 
 const App = () => {
-
 
     const rgbToHex = rgb => {
         let hex = Number(rgb).toString(16);
@@ -166,24 +54,46 @@ const App = () => {
     }
 
     const [state, dispatch] = useReducer(reducer, initialState);
-    document.body.style.background = hexString(
-        state.red,
-        state.green,
-        state.blue
-    );
+    document.body.style.background = '#e4e0df'
 
+    // State for our modal
+    const [isModalOpen, setModalOpen] = useState(false);
 
-    console.log('state', state)
     return (
         <>
-
-            <div className="box">Component will go here</div>
-            <div className="results">
-                <div>
-                    {hexString(state.red, state.green, state.blue)}
-                    <br />
-                    rgb({state.red}, {state.green}, {state.blue})
+            <div className="ColorPickerMenu">
+                <div className="ColorHex">
+                    <div>
+                        {hexString(state.red, state.green, state.blue)}
+                    </div>
                 </div>
+                <div className="BackgroundSquare__border">
+                    <div
+                        className="BackgroundSquare"
+                        style={{background: hexString(state.red, state.green, state.blue)}}
+                    >
+                    </div>
+                </div>
+                <div className="MenuItem__svg">
+                    <svg
+                        onClick={() => setModalOpen(true)}
+                        aria-hidden="true"
+                        focusable="false"
+                        data-prefix="fas"
+                        data-icon="caret-down"
+                        className="svg-inline--fa fa-caret-down fa-w-10"
+                        role="img"
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 320 512">
+                        <path fill="currentColor" d="M31.3 192h257.3c17.8 0 26.7 21.5 14.1 34.1L174.1 354.8c-7.8 7.8-20.5 7.8-28.3 0L17.2 226.1C4.6 213.5 13.5 192 31.3 192z"></path>
+                    </svg>
+                </div>
+                <div className="MenuItem__box">
+                    {isModalOpen ? (
+                        <MenuPresetColors dispatch={dispatch} setModalOpen={setModalOpen}/>
+                    ) : ( null )}
+                </div>
+
             </div>
             <div className="box">
                 <label>Red</label>
@@ -210,12 +120,8 @@ const App = () => {
                     onChange={e => dispatch({ type: "SET_BLUE", value: e.target.value })}
                     value={state.blue}
                 />
-                <input
-                    type="button"
-                    onClick={e => dispatch({ type: "SET_color", value: "#0033ff" })}
-                    value={"#SET_color"}
-                />
             </div>
+
         </>
     );
 };
