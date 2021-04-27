@@ -1,7 +1,9 @@
 import './App.css';
+import React from 'react'
 import {useState, useReducer} from 'react';
 import {MenuPresetColors} from "./components/MenuPresetColors";
 import {MenuRgbSliders} from "./components/MenuRgbSliders";
+
 
 const App = () => {
 
@@ -56,11 +58,17 @@ const App = () => {
     const [state, dispatch] = useReducer(reducer, initialState);
     document.body.style.background = '#e4e0df'
 
+
+    //const [newColor, setNewColor] = useState({});
+
     // State for our modal
     const [isModalOpen, setModalOpen] = useState(false);
+
     // State for modal RGB
     const [isModalOpenRGB, setModalOpenRGB] = useState(false);
 
+
+    //console.log('newColor',newColor)
     return (
         <>
             <div className="ColorPickerMenu">
@@ -76,12 +84,23 @@ const App = () => {
                         style={{background: hexString(state.red, state.green, state.blue)}}
                     >
                     </div>
+                    <div
+                        onClick={() => setModalOpenRGB(true)}
+                        className="BackgroundSquare"
+                        style={{background: hexString(state.red, state.green, state.blue)}}
+                    >
+                    </div>
                 </div>
                 <div className="RGB_Item__box">
                     {isModalOpenRGB ? (
-                        <MenuRgbSliders setModalOpenRGB={setModalOpenRGB} dispatch={dispatch} state={state}/>
+                        <MenuRgbSliders
+                            setModalOpenRGB={setModalOpenRGB}
+                            dispatch={dispatch}
+                            state={state}
+                        />
                     ) : ( null )}
                 </div>
+
 
                 <div className="MenuItem__svg">
                     <svg

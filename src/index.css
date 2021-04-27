@@ -50,7 +50,7 @@ body {
 .BackgroundSquare {
   display: flex;
   flex-direction: row;
-  height: 50px;
+  height: 25px;
   width: 50px;
 }
 .BackgroundSquare:hover {
