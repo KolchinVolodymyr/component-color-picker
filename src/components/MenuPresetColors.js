@@ -1,8 +1,8 @@
+import React from 'react'
 import {useRef} from "react";
 import useOnClickOutside from "../hooks/OnClick.hook";
 
-
-export const MenuPresetColors = ({dispatch, setModalOpen}) => {
+export const MenuPresetColors = ({colors, dispatch, setModalOpen}) => {
 
     // Create a ref that we add to the element for which we want to detect outside clicks
     const ref = useRef();
@@ -12,50 +12,21 @@ export const MenuPresetColors = ({dispatch, setModalOpen}) => {
 
     return (
             <div ref={ref}>
-                <label>
-                    Red
-                    <input
-                        type="button"
-                        onClick={e => {
-                            dispatch({type: "SET_color", value: "#ff0000"});
-                            setModalOpen(false)
-                        }}
-                        style={{background: '#ff0000'}}
-                    />
-                </label>
-                <label>
-                    YELLOW
-                    <input
-                        type="button"
-                        onClick={e => {
-                            dispatch({type: "SET_color", value: "#ffcc33"});
-                            setModalOpen(false)
-                        }}
-                        style={{background: '#ffcc33'}}
-                    />
-                </label>
-                <label>
-                    GREEN
-                    <input
-                        type="button"
-                        onClick={e => {
-                            dispatch({type: "SET_color", value: "#17a459"});
-                            setModalOpen(false)
-                        }}
-                        style={{background: '#17a459'}}
-                    />
-                </label>
-                <label>
-                    BLUE
-                    <input
-                        type="button"
-                        onClick={e => {
-                            dispatch({type: "SET_color", value: "#17b3ec"});
-                            setModalOpen(false)
-                        }}
-                        style={{background: '#17b3ec'}}
-                    />
-                </label>
+                {colors.map(color => {
+                    return (
+                        <label key={color.value}>
+                            {color.name}
+                            <input
+                                type="button"
+                                onClick={() => {
+                                    dispatch({type: "SET_COLOR", value: color.value});
+                                    setModalOpen(false)
+                                }}
+                                style={{background: color.value}}
+                            />
+                        </label>
+                    )
+                })}
             </div>
     )
 }
