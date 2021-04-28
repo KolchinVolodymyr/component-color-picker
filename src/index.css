@@ -81,11 +81,23 @@ body {
 .RGB_Item__box {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   width: 250px;
-  margin: 120px auto;
+  margin: 110px auto;
   background: #fff;
   border-radius: 10px;
   position: absolute;
-  right: 0px;
+  right: 0;
+}
+.RGB_Item__box div:before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 20px solid #fff;
+  position: absolute;
+  right: 40%;
+  top: -6%;
+  border-radius: 5px;
 }
 input[type=range] {
   width: 90%;
@@ -121,11 +133,23 @@ input[type=range] {
 .MenuItem__box {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   width: 250px;
-  margin: 120px auto;
+  margin: 110px auto;
   background: #fff;
   border-radius: 10px;
   position: absolute;
-  right: 0px;
+  right: 0;
+}
+.MenuItem__box div:before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 20px solid #fff;
+  position: absolute;
+  right: 6%;
+  top: -5%;
+  border-radius: 5px;
 }
 .MenuItem__box label{
   display: flex;
@@ -135,16 +159,16 @@ input[type=range] {
   color: #989999;
   position: relative;
   padding: 1.3em;
-  border-top: 1px solid #e4e0df;
-
+  border-bottom: 1px solid #e4e0df;
 }
+
 .MenuItem__box label:hover{
   cursor: pointer;
   background: #3377b6;
   color: white;
 }
 input[type=button] {
-  border: 0px;
+  border: 0;
   width: 25px;
   height: 25px;
   position: absolute;

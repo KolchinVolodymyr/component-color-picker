@@ -2,8 +2,9 @@ import React, {useEffect, useRef, useState} from "react";
 import useOnClickOutside from "../hooks/OnClick.hook";
 import {hexString} from "../functions/hexString";
 
+
 export const BackrgoundSquare = ({dispatch, state}) => {
-    //
+
     const [newColor, setNewColor] = useState({red:state.red, green: state.green, blue: state.blue});
 
     // State for modal RGB
@@ -17,7 +18,7 @@ export const BackrgoundSquare = ({dispatch, state}) => {
         setNewColor({red:state.red, green: state.green, blue: state.blue});
     });
 
-    //
+    //Update the color setNewColor if changed state
     useEffect(()=>{
         setNewColor(state);
     }, [state]);
@@ -41,7 +42,7 @@ export const BackrgoundSquare = ({dispatch, state}) => {
             <div className="RGB_Item__box">
                 {isModalOpenRGB ? (
                     <div ref={ref}>
-                        <div className="box">
+                        <div className="box" >
                             <label>
                                 R
                                 <input
@@ -53,7 +54,6 @@ export const BackrgoundSquare = ({dispatch, state}) => {
                                     value={newColor.red}
                                 />
                             </label>
-
                             <label>
                                 G
                                 <input

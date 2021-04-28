@@ -2,10 +2,9 @@ import './App.css';
 import React from 'react'
 import {ColorPicker} from "./components/ColorPicker";
 
-
 const App = () => {
 
-    //
+    //a list of colors for the drop-down menu with the given options.
     const colors = [
         {name:'RED', value:'#ff0000'},
         {name:'YELLOW', value:'#ffcc33'},

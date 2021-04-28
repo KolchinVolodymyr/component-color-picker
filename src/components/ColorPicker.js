@@ -4,7 +4,8 @@ import {BackrgoundSquare} from "./BackrgoundSquare";
 import {MenuPresetColors} from "./MenuPresetColors";
 import {hexToRgb} from "../functions/hexToRgb";
 
-export const ColorPicker = ({value, colors}) => {
+
+export const ColorPicker = ({value, colors, onChange}) => {
 
     const initialState = {
         red: hexToRgb(value).red,
@@ -66,6 +67,7 @@ export const ColorPicker = ({value, colors}) => {
                 <div className="MenuItem__box">
                     {isModalOpen ? (
                         <MenuPresetColors
+                            onChange={onChange}
                             colors={colors}
                             dispatch={dispatch}
                             setModalOpen={setModalOpen}
