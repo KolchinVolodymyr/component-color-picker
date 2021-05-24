@@ -24,6 +24,9 @@ Render the component in your code:
 
 ## Screenshots
 
+  ![1](https://user-images.githubusercontent.com/59361675/119330758-40e49700-bc8f-11eb-9cc1-0588c218ab66.png)
+
+  
 ### Menu with preset colors 
 
 ### Menu with RGB sliders
